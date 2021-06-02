@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -11,7 +9,43 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// const carList = [
+//   {
+//     name: 'Rolls Royce',
+//     model: 'Sweptail',
+//   },
+//   {
+//     name: 'Mercedes Benz',
+//     model: 'G33',
+//   },
+//   {
+//     name: 'Bentley',
+//     model: 'Bentayga',
+//   },
+//   {
+//     name: 'BMW',
+//     model: 'inext',
+//   },
+//   {
+//     name: 'Lamborghine',
+//     model: 'Urus',
+//   },
+//   {
+//     name: 'Porche',
+//     model: '911',
+//   },
+// ];
+
+// function Cars() {
+//   let cars = carList.map((element) => {
+//     return <li>name: {element.name}</li>;
+//   });
+//   return (
+//     <div>
+//       <h1>My cars {'My name is favour'} </h1>
+//       <ol>{cars}</ol>
+//     </div>
+//   );
+// }
+
+// ReactDOM.render(<Cars />, document.getElementById('cars'));
