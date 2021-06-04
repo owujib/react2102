@@ -1,96 +1,90 @@
-import logo from './logo.svg';
-import './App.css';
-import Profile from './components/Profile';
-import Cars from './components/Cars';
-import Food from './components/Food';
+import React from 'react';
+import Form from './components/Form';
 import FormElement from './components/FormElement';
 
-function App() {
-  const data = {
-    carList: [
-      {
-        name: 'Rolls Royce',
-        type: 'Sweptail',
-      },
-      {
-        name: 'Mercedes Benz',
-        type: 'G33',
-      },
-      {
-        name: 'Bentley',
-        type: 'Bentayga',
-      },
-      {
-        name: 'BMW',
-        type: 'inext',
-      },
-      {
-        name: 'Lamborghine',
-        type: 'Urus',
-      },
-      {
-        name: 'Porche',
-        type: '911',
-      },
-    ],
-    foodList: [
-      {
-        name: 'Rice',
-        type: 'fried rice',
-      },
-      {
-        name: 'Beans',
-        type: 'Fried Beans',
-      },
-      {
-        name: 'Garri',
-        type: 'Eba',
-      },
-      {
-        name: 'Yam',
-        type: 'Lafu',
-      },
-    ],
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      show: true,
+      text: '',
+      students: [
+        { id: 1, name: 'David', email: 'david@email.com' },
+        { id: 2, name: 'Tobi', email: 'tobi@email.com' },
+        { id: 3, name: 'Mark', email: 'mark@email.com' },
+        { id: 4, name: 'Queen', email: 'queen@email.com' },
+      ],
+    };
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      text: e.target.value,
+    });
   };
 
-  return (
-    <div>
-      <Cars list={data.carList} />
-      <Food list={data.foodList} />
+  handleClick = () => {
+    //if state === true //set it to false
+    this.setState({
+      show: false,
+    });
+  };
 
-      <div className="d-flex">
-        <Profile
-          firstname="John"
-          lastname="Doe"
-          age={32}
-          classname="bg-red"
-          hobbies={['Eating', 'Sleeping', 'Movies']}
-        />
-        <Profile
-          firstname="Jane"
-          lastname="Doe"
-          classname="bg-blue"
-          age={29}
-          hobbies={['Traveling', 'Dancing', 'Reading']}
-        />
-        <Profile
-          firstname="Steve"
-          lastname="Wonder"
-          classname="bg-aqua"
-          age={29}
-          hobbies={['Traveling', 'Dancing', 'Reading']}
+  addStudent = (incomingState) => {
+    let newId = this.state.students.length + 1;
+    let newStudent = { id: newId, ...incomingState };
+    this.setState({
+      students: [...this.state.students, newStudent],
+    });
+  };
+  render() {
+    let { students } = this.state;
+    return (
+      <div>
+        {students.map((student) => {
+          return (
+            <div>
+              <p>name: {student.name}</p>
+              <p>email: {student.email}</p>
+            </div>
+          );
+        })}
+
+        <Form addStudent={this.addStudent} />
+
+        <h1>Hello React</h1>
+        <button type="button" onClick={this.handleClick}>
+          hide box
+        </button>
+        {/* {!this.state.show ? 'hey' : 'me'} */}
+        {this.state.show && (
+          <div
+            style={{
+              width: '400px',
+              height: '400px',
+              backgroundColor: 'green',
+            }}
+          ></div>
+        )}
+
+        <h1>Text: {this.state.text}</h1>
+        {/* 
+        <input
+          type="text"
+          placeholder="enter your text"
+          value={this.state.text}
+          onChange={this.handleChange}
+        /> */}
+
+        <FormElement
+          type="text"
+          placeholder="enter your text"
+          value={this.state.text}
+          onChange={this.handleChange}
         />
       </div>
-      <FormElement type="password" placeholder="enter your password" />
-      <FormElement type="email" placeholder="enter your email" />
-      <FormElement type="text" placeholder="enter your text" />
-      <FormElement type="button" value="my test button" />
-      <FormElement type="submit" value="my submit button" />
-      <FormElement type="reset" value="my reset button" />
-      <FormElement type="range" />
-      <FormElement type="color" />
-    </div>
-  );
+    );
+  }
 }
 
 export default App;
