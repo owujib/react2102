@@ -1,26 +1,8 @@
 import React from 'react';
 
-const Food = () => {
-  const foodList = [
-    {
-      name: 'Rice',
-      type: 'fried rice',
-    },
-    {
-      name: 'Beans',
-      type: 'Fried Beans',
-    },
-    {
-      name: 'Garri',
-      type: 'Eba',
-    },
-    {
-      name: 'Yam',
-      type: 'Lafu',
-    },
-  ];
-
-  const food = foodList.map((element) => {
+const Food = (props) => {
+  const { list } = props;
+  const food = list.map((element) => {
     return (
       <div>
         <p>name: {element.name}</p>

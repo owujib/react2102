@@ -1,46 +1,16 @@
 import React from 'react';
+import Card from './Card';
 
 const Cars = (props) => {
-  const carList = [
-    {
-      name: 'Rolls Royce',
-      model: 'Sweptail',
-    },
-    {
-      name: 'Mercedes Benz',
-      model: 'G33',
-    },
-    {
-      name: 'Bentley',
-      model: 'Bentayga',
-    },
-    {
-      name: 'BMW',
-      model: 'inext',
-    },
-    {
-      name: 'Lamborghine',
-      model: 'Urus',
-    },
-    {
-      name: 'Porche',
-      model: '911',
-    },
-  ];
+  const { list } = props;
 
-  console.log(props);
-  const carItem = carList.map((element) => {
-    return (
-      <div>
-        <p>Name: {element.name}</p>
-        <p>Model: {element.model}</p>
-      </div>
-    );
+  const cars = list.map((element, id) => {
+    return <Card {...element} id={id} />;
   });
   return (
     <div>
       <h1>My cars List 🚗</h1>
-      <div className="d-flex">{carItem}</div>
+      <div className="d-flex">{cars}</div>
     </div>
   );
 };
