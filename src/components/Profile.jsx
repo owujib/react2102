@@ -5,6 +5,7 @@ export default function Profile(props) {
   let hobby = hobbies.map((element, id) => {
     return <li key={id}>{element}</li>;
   });
+
   return (
     <div
       className={classname}

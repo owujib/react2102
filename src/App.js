@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
 import FormElement from './components/FormElement';
+import Teachers from './components/Teachers';
 
 class App extends React.Component {
   constructor() {
@@ -13,6 +14,12 @@ class App extends React.Component {
         { id: 2, name: 'Tobi', email: 'tobi@email.com' },
         { id: 3, name: 'Mark', email: 'mark@email.com' },
         { id: 4, name: 'Queen', email: 'queen@email.com' },
+      ],
+
+      teachers: [
+        { id: 1, name: 'Ope', email: 'ope@email.com' },
+        { id: 2, name: 'Ben', email: 'ben@email.com' },
+        { id: 3, name: 'Josh', email: 'josh@email.com' },
       ],
     };
   }
@@ -41,6 +48,8 @@ class App extends React.Component {
     let { students } = this.state;
     return (
       <div>
+        <Teachers teachers={this.state.teachers} />
+
         {students.map((student) => {
           return (
             <div>
